@@ -71,4 +71,42 @@ it('Arrays', () => {
 })
 
 //Checar os tipos
+it('Types', () => {
+    const num = 1
+    const str = 'String'
 
+    expect(num).to.be.a('number') //verifica se num é tipo number
+    expect(str).to.be.a('string') //verifica se str é tipo string
+    expect({}).to.be.an('object') //verifica se é objeto
+    expect([]).to.be.an('array') // verifica se é array
+})
+
+//verificação em string
+it('String', () => {
+    const str = 'String de teste'
+
+    expect(str).to.be.equal('String de teste') //verifica se o texto esta igual ao do objeto(str)
+    expect(str).to.be.have.length(15) //verifica se tem 15 caracteres
+    expect(str).to.be.contains('de') //verifica se contem o valor informado
+    expect(str).to.match(/teste$/) //deve finalizar com a palavra "teste"
+    expect(str).to.match(/^Stri/) //deve iniciar com as letras "stri"
+    expect(str).to.match(/.{15}/) //verifica se tem 15 caracteres
+    expect(str).to.match(/\w+/) //verifica se existe apenas letras 
+    expect(str).to.match(/\D+/) //verifica se nao contem numeros
+})
+
+//Verificação com numeros
+it('Numbers', () =>{
+    const number = 4
+    const floatNumber = 5.2123
+
+    expect(number).to.be.equal(4) //verifica se é igual a 4
+    expect(number).to.be.above(3) //verifica se é acima de 3
+    expect(number).to.be.below(7) //verifica se é abaixo de 7
+
+    expect(floatNumber).to.be.equal(5.2123) //verifica igualdade
+    expect(floatNumber).to.be.closeTo(5.2, 0.1) //verifica se o  numero flutuante esta proximo de 5.2 e com precisao de 0.1, isso se deve pq nem sempre possui numero exato
+    
+
+
+})
