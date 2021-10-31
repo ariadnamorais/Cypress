@@ -20,4 +20,19 @@ describe('Cypress basics', () => {
             .should('be.equal', 'Campo de Treinamento')
             .and('contain', 'Treinamento')
     })
+
+    //Localizar e interagir com o elemento
+    it('Should find and interact with an alement', ()=> {
+        cy.visit('https://wcaquino.me/cypress/componentes.html') //Acessar pagina
+        cy.get('#buttonSimple').click() //localiza o botao de "Clique Me" e clica nele
+        cy.get('#buttonSimple').should('have.value', 'Obrigado!')//Nesse botao ao clicar, ele muda de clique me para obrigado. Então foi feita a acertiva para ver se o valor(value) ficava obrigado!
+
+        //forma que é a mesma coisa mas digita menos e rápido por fazer a verificaçao só 1 vez
+
+        cy.get('#buttonSimple')
+            .click()  //fez o clique
+            .should('have.value', 'Obrigado!') //fez acertiva do value
+
+        
+    })
 })
