@@ -7,7 +7,7 @@ it('Equality', () => {
     const a = 1;
 
     expect(a).equal(1); //verifica se o A é igual a 1 mesmo
-    expect(a,'Deveria ser 1').equal(1);
+    expect(a, 'Deveria ser 1').equal(1);
     expect(a).to.be.equal(1);
     expect('a').not.to.be.equal('b');
 })
@@ -28,8 +28,8 @@ it('Truthy', () => {
 //Exemplo de acertiva para comparar a igualdade de objetos
 it('Object Equality', () => {
     const obj = {
-        a:1,
-        b:2
+        a: 1,
+        b: 2
     }
 
     expect(obj).equal(obj)   //Varias formas de verificar se o obj é igual a obj
@@ -38,13 +38,13 @@ it('Object Equality', () => {
     //expect(obj).to.be.equal(obj) //Varias formas de verificar se o obj é igual a obj
 
     //deve colocar o deep para verificar se as propriedades dos objetos sao iguais
-    expect(obj).to.be.deep.equal({a:1, b:2}) //Varias formas de verificar se o obj é igual a obj
+    expect(obj).to.be.deep.equal({ a: 1, b: 2 }) //Varias formas de verificar se o obj é igual a obj
 
     //forma mais curta de fazer a checagem acima
-    expect(obj).eql({a:1, b:2})//Varias formas de verificar se o obj é igual a obj
+    expect(obj).eql({ a: 1, b: 2 })//Varias formas de verificar se o obj é igual a obj
 
     //verifica a igualdade da propriedade dentro do objeto
-    expect(obj).include({a:1})//vai verificar se detro do obj a contem a propriedade a com valor 1
+    expect(obj).include({ a: 1 })//vai verificar se detro do obj a contem a propriedade a com valor 1
 
     //verifica se o obj prossui a propriedade b
     expect(obj).to.have.property('b')
@@ -64,8 +64,8 @@ it('Object Equality', () => {
 it('Arrays', () => {
     const arr = [1, 2, 3]
 
-    expect(arr).to.have.members([1,2,3]) //espera que o array possua os membros 1,2,3
-    expect(arr).to.include.members([1,3]) //verifica se os membros estao incluidos
+    expect(arr).to.have.members([1, 2, 3]) //espera que o array possua os membros 1,2,3
+    expect(arr).to.include.members([1, 3]) //verifica se os membros estao incluidos
     expect(arr).to.not.be.empty
     expect([]).to.be.empty
 })
@@ -96,7 +96,7 @@ it('String', () => {
 })
 
 //Verificação com numeros
-it('Numbers', () =>{
+it('Numbers', () => {
     const number = 4
     const floatNumber = 5.2123
 
@@ -106,7 +106,7 @@ it('Numbers', () =>{
 
     expect(floatNumber).to.be.equal(5.2123) //verifica igualdade
     expect(floatNumber).to.be.closeTo(5.2, 0.1) //verifica se o  numero flutuante esta proximo de 5.2 e com precisao de 0.1, isso se deve pq nem sempre possui numero exato
-    
+
 
 
 })

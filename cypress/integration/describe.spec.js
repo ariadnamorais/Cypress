@@ -10,14 +10,14 @@ describe('Grupo de teste', () => {
     describe('Grupo especifico de teste 1', () => {
         it('Um teste especifico 1', () => {
         })
-        it('Um teste especifico 2', () => {            
+        it('Um teste especifico 2', () => {
         })
     })
 
     describe('Grupo especifico de teste 2', () => {
-        it('Um teste especifico 1',() => {
+        it('Um teste especifico 1', () => {
         })
-        it('Um teste especifico 2',() => {
+        it('Um teste especifico 2', () => {
         })
     })
 
