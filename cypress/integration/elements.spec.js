@@ -22,6 +22,8 @@ it('Text',()=>{
         cy.contains('Voltar').click() //com contains, busca o elemento pelo nome.
         cy.get('#resultado').should('have.text','Voltou!')
 
+        //atencao ao utilizar o contains. é melhor usar o get, pois fica atrelado a um id, ou a algumas classes... Fica mais confiavel
+        
 
     })
 
