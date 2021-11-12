@@ -38,7 +38,8 @@ describe('Work with basic elements', () => {
 
 
     })
-    it.only('TextFields', () => {
+    //exemplos de text fields
+    it('TextFields', () => {
         cy.get('#formNome').type('Cypress Test') //Serve para escrever texto dentro do campo
         //Esse nao funciona//cy.get('#formNome').should('have.text','Cypress Test')//Aqui ele faz a acertiva para ver se contem o texto digitado anteriormente
         cy.get('#formNome').should('have.value', 'Cypress Test') //O should nao vai funcionar para pegar o texto, por isso deve pegar pelo value do campo, assim ele vai ver o texto que contem dentro dele
@@ -52,15 +53,52 @@ describe('Work with basic elements', () => {
         //trabalhando com o backspace (apagar 1 letra do texto)
         cy.get('[data-cy=dataSobrenome]')
             .type('Teste 12345{backspace}{backspace}')
-            .should('have.value', 'Teste 123') 
+            .should('have.value', 'Teste 123')
 
         //Limpar tudo do campo
         cy.get('#elementosForm\\:sugestoes')  //esse objeto possui dois pontos, é importante colocar duas barras a esquerda para ele entender
             .clear()//aqui limpa
-            .type('texto qualquer{selectall}acerto', {delay:100}) //escreve, seleciona todo o texto e escreve a palavra acerto - O delay foi para ver ele fazendo o processo de selecionar tudo e escrever por cima
-            .should('have.value','acerto') //confere
+            .type('texto qualquer{selectall}acerto', { delay: 100 }) //escreve, seleciona todo o texto e escreve a palavra acerto - O delay foi para ver ele fazendo o processo de selecionar tudo e escrever por cima
+            .should('have.value', 'acerto') //confere
 
 
+    })
+
+    //exemplos de radio button
+    it('RadioButton', () => {
+        cy.get('#formSexoFem')
+            .click()  //clica
+            .should('be.checked') //faz a acertiva para checar se ele está selecionado
+        cy.get('#formSexoMasc')
+            .should('not.be.checked') //aqui verificou se o outro radio que nao foi clicado, nao está selecionado
+
+        //testar busca por propriedades na pagina. (Inspecionar a pagina e verificar qual propriedade esta agrupando o elemento. Nesse caso foi o name)
+        cy.get("[name='formSexo']") // está entre [] pois ele irá pesquisar poro que possui o name formSexo
+            .should('have.length', 2) //verifica se possui dois elementos formSexo na página
+    })
+
+    //exemplo com checkbox
+    it('CheckBox', () => {
+        cy.get('[name=formComidaFavorita]') //busca por essa propriedade na pagina
+            .click({multiple:true}) //clica em todas as opções do checkbox
+            .should('be.checked') //verifica se estao marcados
+            .click({multiple:true})//clica em todos e desmarca o check
+            .should('not.be.checked') //verifica se estao desmarcados         
+    })
+
+    it.only('CheckBoxMaisExemp', () => {
+        cy.get('#formComidaPizza')
+            .click()
+            .should('be.checked')
+        cy.get('[name=formComidaFavorita]') //busca por essa propriedade na pagina
+            .click({multiple:true})
+        cy.get('#formComidaPizza').should('not.be.checked')
+        cy.get('#formComidaCarne').should('be.checked')
+        cy.get('#formComidaFrango').should('be.checked')
+        cy.get('#formComidaVegetariana').should('be.checked')
+
+
+        
     })
 
 })
