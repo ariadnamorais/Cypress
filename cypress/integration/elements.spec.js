@@ -52,7 +52,7 @@ describe('Work with basic elements', () => {
         //trabalhando com o backspace (apagar 1 letra do texto)
         cy.get('[data-cy=dataSobrenome]')
             .type('Teste 12345{backspace}{backspace}')
-            .should('have.value', 'Teste 123')
+            .should('have.value', 'Teste 123') 
 
         //Limpar tudo do campo
         cy.get('#elementosForm\\:sugestoes')  //esse objeto possui dois pontos, é importante colocar duas barras a esquerda para ele entender
