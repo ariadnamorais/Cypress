@@ -80,25 +80,47 @@ describe('Work with basic elements', () => {
     //exemplo com checkbox
     it('CheckBox', () => {
         cy.get('[name=formComidaFavorita]') //busca por essa propriedade na pagina
-            .click({multiple:true}) //clica em todas as opções do checkbox
+            .click({ multiple: true }) //clica em todas as opções do checkbox
             .should('be.checked') //verifica se estao marcados
-            .click({multiple:true})//clica em todos e desmarca o check
+            .click({ multiple: true })//clica em todos e desmarca o check
             .should('not.be.checked') //verifica se estao desmarcados         
     })
 
-    it.only('CheckBoxMaisExemp', () => {
+    //exemplo 2 de cenario com checkbox
+    it('CheckBoxMaisExemp', () => {
         cy.get('#formComidaPizza')
             .click()
             .should('be.checked')
         cy.get('[name=formComidaFavorita]') //busca por essa propriedade na pagina
-            .click({multiple:true})
+            .click({ multiple: true })
         cy.get('#formComidaPizza').should('not.be.checked')
         cy.get('#formComidaCarne').should('be.checked')
         cy.get('#formComidaFrango').should('be.checked')
         cy.get('#formComidaVegetariana').should('be.checked')
-
-
-        
     })
+
+    //Exemplo de ComboBox
+    it('ComboBox', () => {
+        cy.get('[data-test=dataEscolaridade]')
+            .select('2o grau completo') //seleciona um valor do combobox
+            .should('have.value', '2graucomp')//verificar no value, igual o textfield
+
+        //pode selecionar como acima pelo que esta escrito no combo ou pelo value
+        cy.get('[data-test=dataEscolaridade]')
+            .select('1graucomp') //seleciona um valor do combobox pelo value
+            .should('have.value', '1graucomp')//verificar no value, igual o textfield
+
+        //TODO pesquisar as opcoes do combo (o que tinha antes?)
+
+    })
+
+    //Exemplo de combo multiplos
+    it.only('ComboMultip', () => {
+        cy.get('[data-testid=dataEsportes]')
+            .select(['natacao', 'Corrida']) //seleciona multiplos colocando o value em um arrey, assim -> ([])
+            
+            //TODO pesquisar, como validar combo multiplos
+    })
+
 
 })
